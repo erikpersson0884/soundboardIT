@@ -38,6 +38,24 @@ soundsDiv.style.setProperty('--num-cols', numCols); // Set custom property for n
 let playingSound;
 
 
+function getRandomHexColor() {
+    // Generate random values for red, green, and blue components
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    // Convert the decimal values to hexadecimal
+    const redHex = red.toString(16).padStart(2, '0');
+    const greenHex = green.toString(16).padStart(2, '0');
+    const blueHex = blue.toString(16).padStart(2, '0');
+
+    // Concatenate the hexadecimal values to form a color code
+    const hexColor = `#${redHex}${greenHex}${blueHex}`;
+
+    return hexColor;
+}
+
+
 sounds.forEach((sound) => {
     const soundElement = document.createElement('div');
     soundElement.classList.add('soundButton');
