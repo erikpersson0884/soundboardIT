@@ -1,5 +1,3 @@
-const soundsDiv = document.getElementById('soundBoard');
-
 let playingSoundElement = null;
 
 function populateSoundDiv(soundsDiv, soundsToShow) {
@@ -17,27 +15,21 @@ function populateSoundDiv(soundsDiv, soundsToShow) {
 
         soundElement.innerHTML = `
             <p class="soundName">${sound.name}</p>
-            <button class="starButton" data-sound-name="${sound.name}">
-                <img src="images/${sound.starred ? 'starred' : 'unstarred'}.png" alt="starred">
+            <button class="starButton">
+                <img class="starImage" src="images/icons/${sound.starred ? 'starred' : 'unstarred'}.png" alt="starred">
             </button>
         `;
 
+
         const starButton = soundElement.querySelector('.starButton');
-        starButton.addEventListener('click', (event) => toggleStarredSound(event, sound));
+        starButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+
+            toggleStarredSound(event, sound)
+        });
 
         soundsDiv.appendChild(soundElement);
     });
-}
-
-function playSound(soundToPlay) {
-    if (playingSoundElement !== null) stopSound(playingSoundElement);
-    playingSoundElement = soundToPlay;
-    playingSoundElement.play();
-}
-
-function stopSound(sound) {
-    sound.pause();
-    sound.currentTime = 0;
 }
 
 function sortSounds(sounds) {
@@ -61,7 +53,7 @@ function sortSounds(sounds) {
 }
 
 function toggleStarredSound(event, sound) {
-    event.stopPropagation();  // Prevents the click event from triggering play
+    event.stopPropagation();
 
     let starredSounds = JSON.parse(localStorage.getItem('starredSounds')) || [];
 
@@ -77,10 +69,17 @@ function toggleStarredSound(event, sound) {
     location.reload();
 }
 
-function updateStarButton(button, isStarred) {
-    const img = button.querySelector('img');
-    img.src = `images/${isStarred ? 'starred' : 'unstarred'}.png`;
+function playSound(soundToPlay) {
+    if (playingSoundElement !== null) stopSound(playingSoundElement);
+    playingSoundElement = soundToPlay;
+    playingSoundElement.play();
 }
+
+function stopSound(sound) {
+    sound.pause();
+    sound.currentTime = 0;
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const { starredSounds, generalSounds } = sortSounds(sounds);
