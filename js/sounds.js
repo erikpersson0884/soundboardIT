@@ -1,11 +1,12 @@
 const sounds = [
     {
-        name: "John Doe", 
+        name: "Sound 1", 
         soundFile: "sounds/1.wav"
     },
     {
-        name: "Jane Doe",
-        soundFile: "sounds/boom.wav"
+        name: "Sound 2",
+        soundFile: "sounds/boom.wav",
+        starred: true
     },
     {
         name: "Hund",
@@ -13,15 +14,11 @@ const sounds = [
     },
     {
         name: "laugh",
-        soundFile: "sounds/laugh.wav"
+        soundFile: "sounds/laugh.wav",
+        starred: true
     },
     {
         name: "retro",
         soundFile: "sounds/retro.wav"
-    },
-    {
-        name: "oooh my god",
-        soundFile: "sounds/ohmygod.wav",    
-        image: "images/ohmygod.jpg"
     }
 ]
