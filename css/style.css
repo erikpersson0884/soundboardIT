@@ -38,7 +38,7 @@ header {
     border-bottom: .1rem solid #fff;
 }
 
-.content {
+.mainContent {
     margin: 3rem;
 }
 
@@ -137,4 +137,11 @@ footer {
 footer a {
     color: #09cdda;
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .mainContent {
+        margin: 1rem
+    }
+    
 }
