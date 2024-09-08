@@ -4,12 +4,12 @@ const sounds = [
         soundFile: "sounds/dog.wav"
     },
     {
-        name: "laugh",
+        name: "Laugh",
         soundFile: "sounds/laugh.wav",
         starred: true
     },
     {
-        name: "retro",
+        name: "Retro",
         soundFile: "sounds/retro.wav"
     },
     {
